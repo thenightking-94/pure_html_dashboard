@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous"></head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <title>Dashboard</title>
+
+
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+      }
+      .body
+      {
+        height: 100vh;
+        background-color: #FFECFB;
+      }
+      #nav {
+        border-bottom: 2px solid #dcdcdc;
+        height: 70px;
+        top: 0px;
+        position: fixed;
+        width: 100%;
+        z-index: 3;
+        background-color: white;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding-left: 20px;
+        -webkit-animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+	        animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+
+      }
+      @-webkit-keyframes scale-up-center {
+    0% {
+      -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+      }
+     100% {
+     -webkit-transform: scale(1);
+            transform: scale(1);
+     }
+      }
+      @keyframes scale-up-center {
+  0% {
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+      }
+      #home_text {
+        margin-left: 90px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 17px;
+        margin-top: 15px;
+        color: #a2a2a2;
+      }
+      .avatar {
+        margin-right: 15px;
+        vertical-align: middle;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+      .icon_notification
+      {     
+      cursor: pointer;
+      height: 30px;
+      width: 30px;
+      }
+      #span_header
+      {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+      }
+      #tooltip_logged_info
+      {
+        border: 1px solid #dcdcdc;
+        padding: 10px;
+        top:55px !important;
+        visibility: hidden;
+        z-index: 4;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        position: fixed;
+        right:5px;
+        border-radius: 5px;
+        width: 250px;
+        background-color: white;
+        box-shadow: 5px 8px 10px #888;
+      }
+      #span_header:hover #tooltip_logged_info
+      {
+        visibility: visible;
+      }
+      #line
+      {
+        height:1px;
+        background-color: #dcdcdc;
+        width:100%;
+      }
+      #loggin_detail_span
+      {
+        cursor: pointer;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+      }
+      .info_circle
+      {
+        color: white;
+        background-color: red;
+        vertical-align: middle;
+        width: 18px;
+        height: 18px;
+        font-size: 12px;
+        border-radius: 50%;
+        padding-top:-15px !important;
+        text-align: center;
+      }
+     .sidebar
+     {
+       z-index: 4;
+      -webkit-animation: slide-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: slide-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+     display: flex;
+     flex-direction: column;
+      position: fixed;
+      height: 100vh;
+      left: 0px;
+      top:0px;
+      width:70px;
+      background-color: #191919;
+     }
+     @-webkit-keyframes slide-right {
+  0% {
+    -webkit-transform: translateX(-100px);
+            transform: translateX(-100px);
+  }
+  100% {
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+  }
+     }
+      @keyframes slide-right {
+  0% {
+    -webkit-transform: translateX(-100px);
+            transform: translateX(-100px);
+  }
+  100% {
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+  }
+    }
+
+     #lower_icons
+     {
+      padding: 0px !important;
+       height: 40vh;
+       display: flex;
+       flex-direction: column;
+       justify-content: flex-end;
+       align-items: center;
+       padding-bottom: 30px !important;
+     }
+     #upper_icons
+     {
+       padding: 0px !important;
+       height: 60vh;
+       display: flex;
+       flex-direction: column;
+       justify-content: space-evenly;
+       align-items: center;
+     }
+     .btn_icons
+     {
+       padding-top: 10px;
+       text-align: center;
+       border: none;
+       outline: none;
+       background: transparent ;
+       width: 100%;
+     }
+     .btn_icons:hover
+     {
+       background-color: white;
+     }
+     .btn_icons:hover .icon_upper
+     {
+       color: royalblue !important;
+     }
+     .icon_upper
+     {
+       color: #a2a2a2 !important;
+       font-size: 14px !important;
+     }
+     .icon_upper_main
+     {
+       font-size: 20px !important;
+       -webkit-background-clip: text;
+       -webkit-text-fill-color: transparent; 
+       -moz-background-clip: text;
+       -moz-text-fill-color: transparent;
+       background-color: royalblue;
+       background-image: linear-gradient(to right,royalblue,red);
+     }
+     .icon_upper_last
+     {
+      color: red !important;
+       font-size: 18px !important;
+     }
+     .btn_icons_main
+     {
+       padding-top: 10px;
+       background-color: #191919;
+       border: none;
+       width: 100%;
+       outline: none;
+     }
+     .btn_icons:hover #side_icon
+     {
+       display: block;
+     }
+     #side_icon
+     {
+       display: none;
+       position: fixed;
+       left:70px;
+       width: 100px;
+       text-align: left;
+       margin-top: -40px;
+       color: white;
+       border-radius: 5px;
+       font-size: 12px;
+       padding: 10px;
+       background-color: #191919;
+     }
+     #background_div
+     {
+       margin-top: 70px;
+       margin-left: 100px;
+       
+     }
+     #ul_list
+     {
+       background-color: white;
+       border-radius: 4px;
+       width:150px;
+       margin-left: -10px;
+       padding: 6px;
+       position: fixed;
+       color: black;
+       display:none;
+       font-family: Arial, Helvetica, sans-serif;
+       font-size: 14px;
+       list-style: none;
+     }
+     #ul_list li{
+       padding: 3px;
+     }
+     #ul_list li:hover{
+       background-color: #a2a2a2;
+       color: white;
+       border-radius: 3px;
+     }
+     #list_show:hover #ul_list
+     {
+       display: block;
+     }
+     @media only screen and (max-width: 760px)
+     {
+       .mobile_arrange
+       {
+         margin-left: -35px !important;
+       }
+     }
+    </style>
+
+
+
+  </head>
+
+
+
+
+  <body>
+
+<div class="body">
+
+  
+
+    <div id="header">
+      <div id="nav">
+        <p id="home_text">Home</p>
+        <span id='span_header'>
+          <img src="https://cdn1.iconfinder.com/data/icons/organise/512/notification-512.png" alt='bell_icon' class='icon_notification'>
+          <img id='avatar_show'
+            src="https://i.pinimg.com/originals/89/64/99/8964998576cfac440b3a14df748fc670.png"
+            alt="Avatar"
+            class="avatar"
+          />
+          <div id='tooltip_logged_info'> 
+            <p style="font-size: 14px;color: #1F75FE;font-weight: 600;">User User_title</p>
+            <p style="font-size: 14px;color: #a2a2a2;font-weight: 600;">User@Organization.com</p>
+            <span id='line'></span>
+            &nbsp;
+              <div id='loggin_detail_span'>
+                <p class="fas fa-gift" style="color: #1F75FE;font-size: 12px !important;"></p>
+                &nbsp;
+                <p style="color: #a2a2a2;font-family: Arial, Helvetica, sans-serif;font-size: 12px;">What's New?</p>
+                &nbsp;
+                <p class='info_circle'>1</p>
+              </div>
+              <div id='loggin_detail_span'>
+                <p class="fas fa-heart" style="font-size: 12px;color: red;"></p>
+                &nbsp;
+                <p style="color: #a2a2a2;font-family: Arial, Helvetica, sans-serif;font-size: 12px;">Refer a friend</p>
+              </div>
+              <div id='loggin_detail_span'>
+                <p class="fas fa-cog" style="font-size: 12px;color: #1F75FE;"></p>
+                &nbsp;
+                <p style="color: #a2a2a2;font-family: Arial, Helvetica, sans-serif;font-size: 12px;">Settings</p>
+              </div>
+              <div id='loggin_detail_span'>
+                <p class="fas fa-sign-out-alt" style="font-size: 12px;color: #1F75FE;"></p>
+                &nbsp;
+              <p style="color: #a2a2a2;font-family: Arial, Helvetica, sans-serif;font-size: 12px;">Sign out</p>
+              </div>
+          </div>
+        </span>
+      </div>
+    </div>
+
+
+
+
+
+   <div class='sidebar'>
+
+    <div id='upper_icons'>
+      <button class="btn_icons_main">
+        <p class="fas fa-location-arrow icon_upper_main" ></p>
+      </button>
+      <button class="btn_icons"  >
+        <p class="fas fa-home icon_upper" ></p>
+        <p id='side_icon'>Home</p>
+      </button>
+     <button class="btn_icons"  >
+      <p class="fas fa-user-alt icon_upper"></p>
+      <p id='side_icon'>User</p>
+     </button>
+      <button class="btn_icons"  >
+        <p class="fas fa-paper-plane icon_upper"></p>
+        <p id='side_icon'>Mail</p>
+      </button>
+      <button class="btn_icons" >
+        <p class="far fa-calendar-check icon_upper"></p>
+        <p id='side_icon'>Calendar</p>
+      </button>
+      <button class="btn_icons" >
+        <p class="fas fa-envelope icon_upper"></p>
+        <p id='side_icon'>Email</p>
+      </button>
+      <button class="btn_icons"  >
+        <p class="fas fa-phone icon_upper"></p>
+        <p id='side_icon'>Phone</p>
+      </button>
+      <button class="btn_icons"  >
+        <p class="fas fa-chart-line icon_upper"></p>
+        <p id='side_icon'>Charts</p>
+      </button>
+     <button class="btn_icons" >
+      <p class="fas fa-cogs icon_upper"></p>
+      <p id='side_icon'>Settings</p>
+     </button>
+    </div>
+
+
+    <div id='lower_icons'>
+      <button class="btn_icons"  >
+        <p class="fas fa-ellipsis-v icon_upper"></p>
+        <p id='side_icon'>Statistics</p>
+      </button>
+     <button class="btn_icons" >
+      <p class="far fa-question-circle icon_upper_last"></p>
+      <p id='side_icon'>Info</p>
+     </button>
+    </div>
+   </div> 
+
+
+   
+
+
+   
+   <div id='background_div'>
+     <div class="container-fluid mobile_arrange" >
+       <div class='row'>
+         
+         <div class="col col-sm-5 col-lg-5 col-xs-12">
+
+         </div>
+
+         <div class="col col-sm-7 col-lg-7 col-xs-12">
+          <div class="container-fluid" style="margin-top: 50px;">
+            <div class='row'>
+              <div class="col col-sm-6 col-md-6 col-lg-6 col-xs-12">
+                <p style="font-family: Arial, Helvetica, sans-serif;font-size: 12px;color: #a2a2a2;font-weight: 600;">LIVEFEED</p>
+                <div style="display: flex;flex-direction: row;justify-content: flex-start;align-items: center;">
+                  <button id='list_show' style="border-radius: 3px;color: white;width:150px;text-align: left !important;outline: none;border: 1px solid #dcdcdc;background-color: white;height: 30px;padding-top: 6px;padding-left: 10px;padding-right: 8px;">
+                    <p style="font-family: Arial, Helvetica, sans-serif;font-size: 12px;color: #a2a2a2;">Show : &nbsp;<b style="color: black !important;">ALL&nbsp;<i style="float:right" class="fas fa-caret-down"></i></b></p>
+                    <ul id='ul_list'>
+                      <li>First item</li>
+                      <li>Second item</li>
+                      <li>Third item</li>
+                      <li>N-items</li>
+                    </ul>
+                  </button>
+                      &nbsp;
+                  <button style="border-radius: 3px;width:30px;text-align: center !important;outline: none;border: 1px solid #dcdcdc;background-color: white;height: 30px;padding: 4px;">
+                    <i style="color: black;" class="fas fa-filter"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="col col-sm-6 col-md-6 col-lg-6 col-xs-12"  >
+                <div style="padding-left:10px;border-radius:4px;margin-top: 33px;margin-right: -20px !important;display: flex;flex-direction: row;justify-content: center;align-items: center;background-color: white;border: 1px solid #dcdcdc;">
+                  <i class="fas fa-search" style="cursor: pointer;"></i>
+                  &nbsp;
+                  <input type='text' placeholder="type to search..." style="float:right !important;width:100%;border:none;outline: none;"/>
+                </div>
+               
+              </div>
+           
+           
+           
+            </div>
+             <div class="clearfix">
+             </div>
+             <div class="row justify-content-center" style="margin-top: 150px;">
+              <div style="display: flex;flex-direction: column;justify-content: center;align-items: center;">
+                <img src="https://ii.library.jhu.edu/wp-content/uploads/sites/31/2018/04/pencil-308509_640.png" style="height: 120px;width: 120px;">
+                &nbsp;
+                <p style="font-family: Arial, Helvetica, sans-serif;font-size: 15px;color: #010F42;font-weight: 600;">No notifications yet</p>
+                <p style="font-family: Arial, Helvetica, sans-serif;font-size: 13px;color: #a2a2a2;font-weight: lighter;">
+                  You'll start seing real time notifications here when your emails are opened, clicked or replied to.
+                </p>
+              </div>
+              
+             </div>
+          </div>
+         </div>
+       </div>
+     </div>
+   </div>
+
+
+
+</div>
+  </body>
+</html>
