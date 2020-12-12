@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
 
+    //Bootstrap and fa-fa icons are imported from the respective
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous"></head>
@@ -10,7 +11,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <title>Dashboard</title>
 
-
+    //stylesheet for the Dashboard
     <style>
       * {
         margin: 0px;
@@ -290,6 +291,22 @@
          margin-left: -35px !important;
        }
      }
+     .cal_day
+     {
+       font-size: 13px;
+      border-top-left-radius: 6px;
+      border-top-right-radius: 6px;
+      border-top: 2px solid black !important;
+      margin-top: -1px !important;
+      padding-top: 8px;
+     }
+     .email_msg
+     {
+      font-size: 14px;
+      padding-top: 8px;
+      color: #585858;
+     }
+     
     </style>
 
 
@@ -412,8 +429,69 @@
    <div id='background_div'>
      <div class="container-fluid mobile_arrange" >
        <div class='row'>
-         
+
          <div class="col col-sm-5 col-lg-5 col-xs-12">
+
+          <div style="margin-top: 30px;background-color: white;border-radius: 2px;padding-left: 10px;padding-right:10px;padding-top: 10px;border-bottom: 1px solid #a2a2a2;cursor: pointer;">
+            <div style="display: flex;flex-direction: row;justify-content: space-between;align-items: center;">
+              <div style="display: flex;flex-direction: row;justify-content: flex-start;align-items: center;font-family: Arial, Helvetica, sans-serif;color: #a2a2a2;font-size: 14px;">
+                <p class="fas fa-calendar-day"></p>
+                &nbsp;
+                <p style="font-weight: 600;">Number of days </p> 
+              </div>
+              <p style="font-weight: 600;color: black !important;">0</p>
+            </div>
+          </div>
+
+          <div style="background-color: white;border-bottom-right-radius: 2px;border-bottom-left-radius: 2px;padding-left: 10px;padding-right:10px;padding-top: 10px;cursor: pointer;">
+              <div style="display: flex;flex-direction: row;justify-content: space-around;align-items: center;margin-top: 100px;padding-top: 0px !important;border-top:2px solid black;">
+                <p class="cal_day">Dec 08</p>
+                <p class="cal_day">Dec 09</p>
+                <p class="cal_day">Dec 10</p>
+                <p class="cal_day">Dec 11</p>
+                <p class="cal_day">Dec 12</p>
+              </div>
+          </div>
+
+
+          <div style="margin-top: 20px;background-color: white;border-radius: 2px;padding-left: 10px;padding-right:10px;padding-top: 10px;border-bottom: 1px solid #a2a2a2;cursor: pointer;">
+            <div style="display: flex;flex-direction: row;justify-content: space-between;align-items: center;">
+              <div style="display: flex;flex-direction: row;justify-content: flex-start;align-items: center;font-family: Arial, Helvetica, sans-serif;color: #a2a2a2;font-size: 14px;">
+                <p class="fas fa-clock"></p>
+                &nbsp;
+                <p style="font-weight: 600;">EMAILS SCHEDULED</p> 
+              </div>
+              <p style="font-weight: 600;color: black !important;">0</p>
+            </div>
+          </div>
+
+          <div style="background-color: white;border-bottom-right-radius: 2px;border-bottom-left-radius: 2px;padding-left: 10px;padding-right:10px;padding-top: 5px;cursor: pointer;">
+            <div style="display: flex;flex-direction: row;justify-content: space-around;align-items: center;margin-top: 10px;padding-top: 0px !important;">
+              <div class="email_msg"><b>0</b><p>Today</p></div>
+              <div class="email_msg"><b>0</b><p>Upcoming</p></div>
+              <div class="email_msg" style="border-right: 1px solid #dcdcdc;padding-right: 50px;"><b>0</b><p>Awaiting Approval</p></div>
+              <div class="email_msg" ><b>0</b><p>Errors</p></div>
+            </div>
+        </div>
+
+        <div style="margin-top: 20px;background-color: white;border-radius: 2px;padding-left: 10px;padding-right:10px;padding-top: 10px;border-bottom: 1px solid #a2a2a2;cursor: pointer;">
+          <div style="display: flex;flex-direction: row;justify-content: space-between;align-items: center;">
+            <div style="display: flex;flex-direction: row;justify-content: flex-start;align-items: center;font-family: Arial, Helvetica, sans-serif;color: #a2a2a2;font-size: 14px;">
+              <p class="far fa-calendar-check"></p>
+              &nbsp;
+              <p style="font-weight: 600;">TASKS SCHEDULED</p> 
+            </div>
+            <p style="font-weight: 600;color: black !important;">5</p>
+          </div>
+        </div>
+
+        <div style="background-color: white;border-bottom-right-radius: 2px;border-bottom-left-radius: 2px;padding-left: 10px;padding-right:10px;padding-top: 5px;cursor: pointer;">
+          <div style="display: flex;flex-direction: row;justify-content: space-around;align-items: center;margin-top: 10px;padding-top: 0px !important;">
+            <div class="email_msg"><b>0</b><p>Today</p></div>
+            <div class="email_msg" style="border-right: 1px solid #dcdcdc;padding-right: 190px !important;"><b>0</b><p>Upcoming</p></div>
+            <div class="email_msg" ><b>5</b><p>Overdue</p></div>
+          </div>
+      </div>
 
          </div>
 
